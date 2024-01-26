@@ -1,0 +1,16 @@
+<div class="card-container">
+  <mat-card class="card">
+    <mat-card-title>
+      Users
+    </mat-card-title>
+    <ng-container *ngFor="let user of users">
+      <mat-card-header (click)="userSelected(user)">
+        <img mat-card-avatar [src]="user.avatar" />
+        <mat-card-title
+          >{{ user.first_name }} {{ user.last_name }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+      </mat-card-header>
+    </ng-container>
+  </mat-card>
+</div>

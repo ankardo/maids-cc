@@ -1,0 +1,44 @@
+<mat-card>
+  <form #form="ngForm">
+    <mat-card-content>
+      <img class="user-detail-image" [src]="user.avatar" />
+      <mat-form-field class="full-width">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.first_name"
+          type="text"
+          name="first_name"
+          [readonly]="readonly"
+          required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.last_name"
+          type="text"
+          name="last_name"
+          [readonly]="readonly"
+          required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          [(ngModel)]="user.email"
+          type="text"
+          name="email"
+          [readonly]="readonly"
+          required />
+      </mat-form-field>
+    </mat-card-content>
+  </form>
+  <mat-card-actions>
+    <button mat-button (click)="back.emit()">
+      <mat-icon>arrow_back</mat-icon>
+      <span>Back</span>
+    </button>
+  </mat-card-actions>
+</mat-card>
+

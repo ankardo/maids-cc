@@ -1,0 +1,11 @@
+<ng-container *ngIf="loaded$ | async as loaded; else loadingBar">
+  <app-user-details
+    [readonly]="true"
+    [user]="selectedUser$ | async"
+    (back)="backButtonPress()"
+  >
+  </app-user-details>
+</ng-container>
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

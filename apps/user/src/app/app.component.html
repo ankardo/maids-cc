@@ -1,0 +1,35 @@
+<ng-container *ngIf="loaded$ | async as loaded; else loadingBar">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Enter a value to search for a user</mat-label>
+    <input matInput [formControl]="searchControl" />
+
+    <button mat-button matSuffix mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <app-users-list
+    *ngIf="loaded; else loadingBar"
+    [users]="usersList$ | async"
+    [readonly]="true"
+    class="full-width"
+  >
+  </app-users-list>
+</ng-container>
+
+<div *ngIf="userPagination$ | async as paginator">
+  <mat-paginator
+    #matPaginator
+    matTooltipDisabled
+    [length]="paginator.total"
+    [pageSize]="paginator.per_page"
+    [pageIndex]="paginator.page - 1"
+    [pageSizeOptions]="[paginator.per_page]"
+    (page)="pageEvent = $event"
+  >
+  </mat-paginator>
+</div>
+
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
